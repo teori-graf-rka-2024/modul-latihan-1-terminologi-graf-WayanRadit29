@@ -1,6 +1,6 @@
 import pytest
 import networkx as nx
-from src importh graph as g
+from src import graph as g
 # Import fungsi yang telah dibuat
 def test_graph_creation():
     edges = [(1, 2), (2, 3), (3, 4), (4, 5), (5, 1), (2, 5)]

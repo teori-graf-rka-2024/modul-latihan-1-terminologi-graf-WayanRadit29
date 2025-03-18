@@ -21,7 +21,7 @@ def bfs_traversal(G, start):
     """Melakukan traversal BFS dari simpul tertentu."""
     if start not in G:
         raise ValueError("Node tidak ada dalam graf.")
-    return list(nx.bfs_tree(G, start))
+    return list(nx.bfs_preorder_nodes(G, start))
 
 
 def find_shortest_path(G, source, target):

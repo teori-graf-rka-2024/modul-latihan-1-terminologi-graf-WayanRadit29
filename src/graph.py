@@ -17,11 +17,26 @@ def dfs_traversal(G, start):
         raise ValueError("Node tidak ada dalam graf.")
     return list(nx.dfs_preorder_nodes(G, start))
 
+from collections import deque
+
 def bfs_traversal(G, start):
-    """Melakukan traversal BFS dari simpul tertentu."""
+    """Melakukan traversal BFS secara manual tanpa NetworkX."""
     if start not in G:
         raise ValueError("Node tidak ada dalam graf.")
-    return list(nx.bfs_preorder_nodes(G, start))
+
+    visited = set()
+    queue = deque([start])
+    result = []
+
+    while queue:
+        node = queue.popleft()
+        if node not in visited:
+            visited.add(node)
+            result.append(node)
+            queue.extend(neighbor for neighbor in G.neighbors(node) if neighbor not in visited)
+
+    return result
+
 
 
 def find_shortest_path(G, source, target):
